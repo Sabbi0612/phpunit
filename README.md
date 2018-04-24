@@ -1,6 +1,6 @@
 # Test-Driven Development Using Phpunit
 
-## Lets understand Unit Testing?
+## Lets understand Unit Testing
 
 A classic definition of unit testing, states that unit testing is a software testing method by which individual units of source code, sets of one or more computer program modules together with associated control data, usage procedures, and operating procedures, are tested to determine whether they are fit for use. 
 
@@ -15,7 +15,7 @@ Lets try to break it down to understand better.
 
 ## Then!! What is Test-Driven Development?
 
-"Test-driven development" refers to a style of programming in which three activities are tightly interwoven: coding, testing (in the form of writing unit tests) and design (in the form of refactoring).
+*"Test-driven development"* refers to a style of programming in which three activities are tightly interwoven: coding, testing (in the form of writing unit tests) and design (in the form of refactoring).
 
 **Some Good reads on TDD -**
 * [TDD by Agile Alliance](https://www.agilealliance.org/glossary/tdd)
@@ -40,7 +40,8 @@ TDD is one the biggest things, you as a developer and software engineer can do t
 * First we need to create a new ‘composer.json' file in our main project directory. (In my case it was phpunit)
 * Copy the below content and paste it inside for the **composer.json** file.
 
-```{
+```javascript
+{
     "require-dev": {
         "phpunit/phpunit": "^5.5"
     },
@@ -62,7 +63,7 @@ TDD is one the biggest things, you as a developer and software engineer can do t
 * Run the command ‘composer install’
 * Wait for the process to be completed and when its done we should have a version of phpunit installed on our system.
 * To check the version of the phpunit installed, run the command 'vendor/bin/phpunit —version'
-* Expected output is like - PHPUnit x.x.xx by Sebastian Bergmann and contributors.
+* Expected output is like - `PHPUnit x.x.xx by Sebastian Bergmann and contributors.`
 
 *Hurray!! We are done with our Installation.*
 
