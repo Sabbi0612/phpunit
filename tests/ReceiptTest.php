@@ -23,3 +23,4 @@ class ReceiptTest extends TestCase {
 		);
 	}
 }
+

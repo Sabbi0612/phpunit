@@ -6,4 +6,3 @@ class Receipt {
 		return array_sum($items);
 	}
 }
-
