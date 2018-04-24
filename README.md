@@ -25,6 +25,7 @@ Lets try to break it down to understand better.
 ![TDD pattern][Tdd-pattern]
 
 
+
 ### Significance of following TDD for a developer
 
 TDD is one the biggest things, you as a developer and software engineer can do to level up yourself. It takes you from a style of manual refreshing, testing and looking at things to figure out if something worked to instead validating your software and proving it works the way it’s intended.
@@ -38,6 +39,33 @@ TDD is one the biggest things, you as a developer and software engineer can do t
 ### Steps to Install PHPUnit via composer
 * First we need to create a new ‘composer.json' file in our main project directory. (In my case it was phpunit)
 * Copy the below content and paste it inside for the composer.json file.
+
+```{
+    "require-dev": {
+        "phpunit/phpunit": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "TDD\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TDD\\Test\\": "tests/"
+        }
+    }
+}```
+
+* We can change the phpunit version as per our requirements.
+* Go to the terminal and move to your project directory.
+* Run the command ‘composer install’
+* Wait for the process to be completed and when its done we should have a version of phpunit installed on our system.
+* To check the version of the phpunit installed, run the command 'vendor/bin/phpunit —version'
+* Expected output is like - PHPUnit x.x.xx by Sebastian Bergmann and contributors.
+
+*Hurray!! We are done with our Installation.*
+
+Before we move forward to write our first Unit test, we need to have some bit of knowledge of object-oriented PHP w.r.t concepts like **namespaces, instantiation etc**.
 
 
 
