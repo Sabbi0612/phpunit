@@ -40,7 +40,7 @@ TDD is one the biggest things, you as a developer and software engineer can do t
 * First we need to create a new ‘composer.json' file in our main project directory. (In my case it was phpunit)
 * Copy the below content and paste it inside for the **composer.json** file.
 
-```javascript
+```json
 {
     "require-dev": {
         "phpunit/phpunit": "^5.5"
