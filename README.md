@@ -38,7 +38,7 @@ TDD is one the biggest things, you as a developer and software engineer can do t
 
 ### Steps to Install PHPUnit via composer
 * First we need to create a new ‘composer.json' file in our main project directory. (In my case it was phpunit)
-* Copy the below content and paste it inside for the composer.json file.
+* Copy the below content and paste it inside for the **composer.json** file.
 
 ```{
     "require-dev": {
@@ -54,7 +54,8 @@ TDD is one the biggest things, you as a developer and software engineer can do t
             "TDD\\Test\\": "tests/"
         }
     }
-}```
+}
+```
 
 * We can change the phpunit version as per our requirements.
 * Go to the terminal and move to your project directory.
