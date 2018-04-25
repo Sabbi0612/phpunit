@@ -62,10 +62,10 @@ TDD is one the biggest things, you as a developer and software engineer can do t
 * Go to the terminal and move to your project directory.
 * Run the command ‘composer install’
 * Wait for the process to be completed and when its done we should have a version of phpunit installed on our system.
-* To check the version of the phpunit installed, run the command 'vendor/bin/phpunit —version'
+* To check the version of the phpunit installed, run the command 'vendor/bin/phpunit --version'
 * Expected output is like - `PHPUnit x.x.xx by Sebastian Bergmann and contributors.`
 
-*Hurray!! We are done with our Installation.*
+**_Hurray!! We are done with our Installation._**
 
 Before we move forward to write our first Unit test, we need to have some bit of knowledge of object-oriented PHP w.r.t concepts like **namespaces, instantiation etc**.
 
@@ -82,7 +82,8 @@ Before we move forward to write our first Unit test, we need to have some bit of
 
 
 
-
+This Repo and it's content is inspired by the LinkedIn Learning course **PHP: Test-Driven Development with PHPUnit
+ by Justin Yost**
 
 
 [Tdd-pattern]: https://github.com/Sabbi0612/phpunit/blob/master/images/Tdd-pattern1.png
