@@ -89,6 +89,7 @@ Where we have this receipt class which contains a function total where we take a
 Now to test this piece of code we need to add a **tests** directory, and add all our tests there. For this code in particular we will create a ReceiptTest.php file where our code will look like below - 
 
 ```php
+<?php
 namespace TDD\Test;
 require dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR .'autoload.php';
 
@@ -123,8 +124,8 @@ class ReceiptTest extends TestCase {
 
 
 
-#### This Repo and it's content is inspired by the LinkedIn Learning course **PHP: Test-Driven Development with PHPUnit
- by Justin Yost**
+#### This Repo and it's content is inspired by the LinkedIn Learning course PHP: Test-Driven Development with PHPUnit
+ by Justin Yost
 
 
 [Tdd-pattern]: https://github.com/Sabbi0612/phpunit/blob/master/images/Tdd-pattern1.png
