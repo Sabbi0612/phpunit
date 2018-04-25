@@ -94,13 +94,14 @@ namespace TDD\Test;
 // The below line states to require starting from the root directory, go to the vendor directory, and then require the autoload.php file from there. After this, we can use the PHP TestCase class and our Receipt class and then write our first test class.
 require dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR .'autoload.php';
  
-
+// This imports the PHPUnit core class 'TestCase' for our use.
 use PHPUnit\Framework\TestCase;
 use TDD\Receipt;
 
 class ReceiptTest extends TestCase {
 	public function testTotal() {
 		$Receipt = new Receipt();
+		// assertEquals asserts that two values are equal.
 		$this->assertEquals(
 			15,
 			$Receipt->total([0,2,5,8]),
@@ -109,6 +110,25 @@ class ReceiptTest extends TestCase {
 	}
 }
 ```
+**Important Note:** 
+The assertion methods typically follow a similar pattern: three inputs. First is the _expected value, _second is the actual value, and, finally, a message displayed in the case of a failure._
+So in the above piece of code: 15 will be expected value, The 0,2,5,8 are the actual values in the array and "When summing the total should equal 15" is the message to displayed when condition is failed.
+
+TO know about the tons of other PHPUnit assertions and their usage, Go to [this link](https://phpunit.de/manual/6.5/en/appendixes.assertions.html)
+
+### Let's Run our Test
+To run the test - 
+* We need to simply go to the Terminal(Mac/Linux) or Command Prompt(Windows) and navigate to our phpunit directory.
+* Write the command `vendor/bin/phpunit tests` (We'll learn to write commands specific to a file a bit later)
+* This command will run all the test files inside the **tests** directory.
+
+### Results 
+* If the Expected value is not equal to the actual value (after summing up the elements of the array), then it will display the following report in the Terminal.
+![Test Failed][Test-Failed]
+
+* If the Expected value equals the actual value (after summing up the elements of the array), then it will display the following report in the Terminal.
+![Test Passed][Test-Passed]
+
 
 
 
@@ -132,3 +152,5 @@ class ReceiptTest extends TestCase {
 
 
 [Tdd-pattern]: https://github.com/Sabbi0612/phpunit/blob/master/images/Tdd-pattern1.png
+[Test-Failed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Test-Failed.png
+[Test-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Test-Passed.png
