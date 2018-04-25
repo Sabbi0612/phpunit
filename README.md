@@ -120,13 +120,15 @@ TO know about the tons of other PHPUnit assertions and their usage, Go to [this 
 To run the test - 
 * We need to simply go to the Terminal(Mac/Linux) or Command Prompt(Windows) and navigate to our phpunit directory.
 * Write the command `vendor/bin/phpunit tests` (We'll learn to write commands specific to a file a bit later)
-* This command will run all the test files inside the **tests** directory.
+* This command will run all thse test files inside the **tests** directory.
 
 ### Results 
 * If the Expected value is not equal to the actual value (after summing up the elements of the array), then it will display the following report in the Terminal.
+
 ![Test Failed][Test-Failed]
 
 * If the Expected value equals the actual value (after summing up the elements of the array), then it will display the following report in the Terminal.
+
 ![Test Passed][Test-Passed]
 
 
@@ -152,5 +154,5 @@ To run the test -
 
 
 [Tdd-pattern]: https://github.com/Sabbi0612/phpunit/blob/master/images/Tdd-pattern1.png
-[Test-Failed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Test-Failed.png
+[Test-Failed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Test-Failure.png
 [Test-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Test-Passed.png
