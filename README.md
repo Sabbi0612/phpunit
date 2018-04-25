@@ -67,7 +67,45 @@ TDD is one the biggest things, you as a developer and software engineer can do t
 
 **_Hurray!! We are done with our Installation._**
 
-Before we move forward to write our first Unit test, we need to have some bit of knowledge of object-oriented PHP w.r.t concepts like **namespaces, instantiation etc**.
+**_Before we move forward to write our first Unit test, we need to have some bit of knowledge of Object-Oriented PHP w.r.t concepts like namespaces, instantiation etc._**
+
+## Let's write our first Unit Test
+
+First of all we need a simple piece of code that we want to test. This file can be found by following **src/Receipt.php** in this repo.
+
+```php
+<?php
+namespace TDD;
+
+class Receipt {
+	public function total (array $items = []) {
+		return array_sum($items);
+	}
+}
+```
+
+Where we have this receipt class which contains a function total where we take an array of items with a default of an empty array and return the array sum of those items.
+
+Now to test this piece of code we need to add a **tests** directory, and add all our tests there. For this code in particular we will create a ReceiptTest.php file where our code will look like below - 
+
+```php
+namespace TDD\Test;
+require dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR .'autoload.php';
+
+use PHPUnit\Framework\TestCase;
+use TDD\Receipt;
+
+class ReceiptTest extends TestCase {
+	public function testTotal() {
+		$Receipt = new Receipt();
+		$this->assertEquals(
+			15,
+			$Receipt->total([0,2,5,8]),
+			'When summing the total should equal 15'
+		);
+	}
+}
+```
 
 
 
@@ -82,7 +120,10 @@ Before we move forward to write our first Unit test, we need to have some bit of
 
 
 
-This Repo and it's content is inspired by the LinkedIn Learning course **PHP: Test-Driven Development with PHPUnit
+
+
+
+#### This Repo and it's content is inspired by the LinkedIn Learning course **PHP: Test-Driven Development with PHPUnit
  by Justin Yost**
 
 
