@@ -25,7 +25,6 @@ Lets try to break it down to understand better.
 ![TDD pattern][Tdd-pattern]
 
 
-
 ### Significance of following TDD for a developer
 
 TDD is one the biggest things, you as a developer and software engineer can do to level up yourself. It takes you from a style of manual refreshing, testing and looking at things to figure out if something worked to instead validating your software and proving it works the way it’s intended.
@@ -100,7 +99,7 @@ use TDD\Receipt;
 
 class ReceiptTest extends TestCase {
 	public function testTotal() {
-		$Receipt = new Receipt();
+		$Receipt = new Receipt(); // instantiation
 		// assertEquals asserts that two values are equal.
 		$this->assertEquals(
 			15,
@@ -123,13 +122,61 @@ To run the test -
 * This command will run all thse test files inside the **tests** directory.
 
 ### Results 
-* If the Expected value is not equal to the actual value (after summing up the elements of the array), then it will display the following report in the Terminal.
+If the Expected value is not equal to the actual value (after summing up the elements of the array), then it will display the following report in the Terminal.
 
 ![Test Failed][Test-Failed]
 
-* If the Expected value equals the actual value (after summing up the elements of the array), then it will display the following report in the Terminal.
+If the Expected value equals the actual value then the below result will be displayed. 
 
 ![Test Passed][Test-Passed]
+
+
+
+Since Now we have created our first unit test, its time to *Refactor* our test.
+Going a bit deeper into writing Unit test we follow a certain pattern of **_Arrange-Act-Assert_**
+
+### What is Arrange-Act-Assert Pattern?
+* **_Arrange_** is where we arrange all the necessary preconditions and inputs for our test case. After this,
+* **_Act_** we act on the object or method we are testing i.e. actually call the thing we want to test. And finally, 
+* we finish up with an **_Assertion_** that the expected results have occurred.
+
+### Some general rules to follow while writing unit tests
+* Always follow the basic pattern of Arrange-Act-Assert in all of the tests we write,
+* Our test should happen in isolation as much as possible.
+* We should write tests that focus on writing a single method that does only one thing.
+* Our test should also test only a few things at once
+* Finally, if we find yourself having a lot of trouble with writing a test, that may be a hint to we need to look at our implementation and find a new solution. 
+
+### Let's refactor our previous Test in this pattern
+After refactoring our code will look like this. (Read code comments for better understanding)
+
+```php
+<?php
+namespace TDD\Test;
+require dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR .'autoload.php';
+
+use PHPUnit\Framework\TestCase;
+use TDD\Receipt;
+
+class ReceiptTest extends TestCase {
+	public function setUp() {
+		$this->Receipt = new Receipt();
+	}
+
+	public function tearDown() {
+		unset($this->Receipt);
+	}
+	public function testTotal() {
+		$input = [0,2,5,8]; 
+		$output = $this->Receipt->total($input);
+		$this->assertEquals(
+			15,
+			$output,
+			'When summing the total should equal 15'
+		);
+	}
+}
+
 
 
 
