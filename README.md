@@ -176,6 +176,7 @@ class ReceiptTest extends TestCase {
 		);
 	}
 }
+```
 
 
 
