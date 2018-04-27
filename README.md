@@ -68,7 +68,7 @@ TDD is one the biggest things, you as a developer and software engineer can do t
 
 **_Before we move forward to write our first Unit test, we need to have some bit of knowledge of Object-Oriented PHP w.r.t concepts like namespaces, instantiation etc._**
 
-## Let's write our first Unit Test
+## First Unit Test
 
 First of all we need a simple piece of code that we want to test. This file can be found by following **src/Receipt.php** in this repo.
 
@@ -167,9 +167,9 @@ class ReceiptTest extends TestCase {
 		unset($this->Receipt);
 	}
 	public function testTotal() {
-		$input = [0,2,5,8]; 
-		$output = $this->Receipt->total($input);
-		$this->assertEquals(
+		$input = [0,2,5,8];                        // Arrange
+		$output = $this->Receipt->total($input);   // Act
+		$this->assertEquals(                       // Assert
 			15,
 			$output,
 			'When summing the total should equal 15'
@@ -177,6 +177,17 @@ class ReceiptTest extends TestCase {
 	}
 }
 ```
+
+Here the two methods, `setUp` and `tearDown` are the ones that are called by PHPUnit before every test method.
+* **setUp** permits us to create instances of classes or anything else that we need before running our test method and
+* **tearDown** lets us remove any of those instances to ensure our tests are running in isolation.
+
+
+So overall this is how our Unit test has been refactored - 
+
+![Code-Refactored][Code-Refactored]
+
+
 
 
 
@@ -204,3 +215,4 @@ class ReceiptTest extends TestCase {
 [Tdd-pattern]: https://github.com/Sabbi0612/phpunit/blob/master/images/Tdd-pattern1.png
 [Test-Failed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Test-Failure.png
 [Test-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Test-Passed.png
+[Code-Refactored]: https://github.com/Sabbi0612/phpunit/blob/master/images/Code-Refactored.png
