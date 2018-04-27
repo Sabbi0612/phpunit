@@ -183,9 +183,71 @@ Here the two methods, `setUp` and `tearDown` are the ones that are called by PHP
 * **tearDown** lets us remove any of those instances to ensure our tests are running in isolation.
 
 
-So overall this is how our Unit test has been refactored - 
+### So overall this is how our Unit test has been refactored - 
 
 ![Code-Refactored][Code-Refactored]
+
+This was all aligned more towards Unit Testing..
+
+
+## Let's Practice Test Driven Development Now!!
+
+Lets make more changes to the same ReceiptTest.php and Receipt.php files only.
+
+### Step 1: Write a Failing Test
+Extending the previous `ReceiptTest.php` file we write one more method `testTax` to test calculating the tax for a receipt, by following the same Arrange-Act-Assert pattern which makes our file look like this.
+
+```php
+<?php
+namespace TDD\Test;
+require dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR .'autoload.php';
+
+use PHPUnit\Framework\TestCase;
+use TDD\Receipt;
+
+class ReceiptTest extends TestCase {
+	public function setUp() {
+		$this->Receipt = new Receipt();
+	}
+
+	public function tearDown() {
+		unset($this->Receipt);
+	}
+	public function testTotal() {
+		$input = [0,2,5,8];
+		$output = $this->Receipt->total($input);
+		$this->assertEquals(
+			15,
+			$output,
+			'When summing the total should equal 15'
+		);
+	}
+
+	public function testTax() {
+		$inputAmount = 10.00;
+		$taxInput = 0.10;
+		$output = $this->Receipt->tax($inputAmount, $taxInput);
+		$this->assertEquals(
+			1.00,
+			$output,
+			'The tax calculation should equal 1.00'
+		);
+	}
+}
+```
+
+### Step 2: Run the Test via terminal
+As we expect the Test is going to fail. Following error is expected.
+
+![Dry-Run][Dry-Run]
+
+
+
+
+
+
+
+
 
 
 
@@ -216,3 +278,4 @@ So overall this is how our Unit test has been refactored -
 [Test-Failed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Test-Failure.png
 [Test-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Test-Passed.png
 [Code-Refactored]: https://github.com/Sabbi0612/phpunit/blob/master/images/Code-Refactored.png
+[Dry-Run]: https://github.com/Sabbi0612/phpunit/blob/master/images/Dry-Run.png
