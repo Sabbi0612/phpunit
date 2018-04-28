@@ -237,11 +237,46 @@ class ReceiptTest extends TestCase {
 ```
 
 ### Step 2: Run the Test via terminal
-As we expect the Test is going to fail. Following error is expected.
+As we expect, our Test is going to fail and the error displayed in the below screenshot will be displayed.
 
 ![Dry-Run][Dry-Run]
 
+As stated by the error recieved in the screenshot, our test has failed due to calling an undefined function, hence now to make this test pass we'll have to add this tax function our source code.
 
+### Step 3: Code/Refactor to make the Test Pass
+So here we add a new method `tax` where this tax method needs to take two inputs. First an amount, and second a tax.
+
+Let's run our test one more time and see what we get. 
+
+![Dry-Run-2][Dry-Run-2]
+
+The test still fails, but this time because we returned null instead of our expected value of 1.00. 
+So now, we can calculate the tax amount. To do so, we'll go back to our editor, and we can add return, and in parenthesis, amount times our tax.
+
+Re-run the Test. Wallahh.. 
+
+![Code-Passed][Code-Passed]
+
+It passes this time and in this way we have written our first piece of code in Test-Driven Development Fashion.
+
+So now our Code in Receipt.php looks like this
+
+```php
+<?php
+namespace TDD;
+
+class Receipt {
+	public function total(array $items = []) {
+		return array_sum($items);
+	}
+
+	public function tax($amount, $tax) {
+		return ($amount * $tax);
+	}
+}
+```
+
+## Filter out Test Execution
 
 
 
@@ -279,3 +314,5 @@ As we expect the Test is going to fail. Following error is expected.
 [Test-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Test-Passed.png
 [Code-Refactored]: https://github.com/Sabbi0612/phpunit/blob/master/images/Code-Refactored.png
 [Dry-Run]: https://github.com/Sabbi0612/phpunit/blob/master/images/Dry-Run.png
+[Dry-Run-2]: https://github.com/Sabbi0612/phpunit/blob/master/images/Dry-Run-2.png
+[Code-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Code-Passed.png
