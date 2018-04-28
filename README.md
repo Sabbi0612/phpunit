@@ -278,6 +278,32 @@ class Receipt {
 
 ## Filter out Test Execution
 
+You might have observed till now that during this whole time we have been running all the tests that were a part of the directory `/tests`. It worked fine as we had only two tests in particular in this directory.
+
+Imagine if we had a huge number of tests being written by different members of the team in a much larger project. This would become a really tedious job for us to run all the tests and wait for the execution of just the one that we are working on.
+
+So to solve this problem PHPUnit gives us the option to filter out and run only a specific tests with the help of the commands that we execute into our Terminal or Command prompt.
+
+### Examples: 
+* **Run the full test suite**
+```vendor/bin/phpunit dirname```  where dirname is the name of the test-suite directory in which all our tests are contained.
+For our previous test the command would look like - *vendor/bin/phpunit tests/*
+
+* **Run the tests present in a single test file**
+```vendor/bin/phpunit dirname/filename.php```
+For our previous test the command would look like - *vendor/bin/phpunit tests/RecieptTest.php*
+
+
+* **Run a test related to particular method or class**
+```vendor/bin/phpunit --filter=string``` 
+This string is going to be a *regular expression match against classes, methods, and name spaces*. To run our previous test we'll pass in the method name testTax. When we execute this, we'll see that we only have one test executed, our testTax method.
+So the commands would look like this - 
+*vendor/bin/phpunit --filter=testTax* or *vendor/bin/phpunit --filter=ReceiptTest::testTax*
+
+* **Run tests based on a PHPUnit.xml file**
+It also allows us to no longer have to specify the directory to look for tests in. Instead the XML file acts as a basic configuration file for us. We can view it's contents in phpunit.xml file in the main phpunit directory of this repo.
+
+
 
 
 
