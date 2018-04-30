@@ -287,21 +287,25 @@ So to solve this problem PHPUnit gives us the option to filter out and run only 
 ### Examples: 
 * **Run the full test suite**
 ```vendor/bin/phpunit dirname```  where dirname is the name of the test-suite directory in which all our tests are contained.
-For our previous test the command would look like - *vendor/bin/phpunit tests/*
+For our previous test the command would look like - **_vendor/bin/phpunit tests/_**
 
 * **Run the tests present in a single test file**
 ```vendor/bin/phpunit dirname/filename.php```
-For our previous test the command would look like - *vendor/bin/phpunit tests/RecieptTest.php*
+For our previous test the command would look like - **_vendor/bin/phpunit tests/RecieptTest.php_**
 
 
 * **Run a test related to particular method or class**
 ```vendor/bin/phpunit --filter=string``` 
 This string is going to be a *regular expression match against classes, methods, and name spaces*. To run our previous test we'll pass in the method name testTax. When we execute this, we'll see that we only have one test executed, our testTax method.
 So the commands would look like this - 
-*vendor/bin/phpunit --filter=testTax* or *vendor/bin/phpunit --filter=ReceiptTest::testTax*
+**_vendor/bin/phpunit --filter=testTax_** or **_vendor/bin/phpunit --filter=ReceiptTest::testTax_**
 
 * **Run tests based on a PHPUnit.xml file**
-It also allows us to no longer have to specify the directory to look for tests in. Instead the XML file acts as a basic configuration file for us. We can view it's contents in phpunit.xml file in the main phpunit directory of this repo.
+It also allows us to no longer have to specify the directory to look for tests in. Instead the XML file acts as a basic configuration file for us. We can view it's contents in **_phpunit.xml_** file in the main phpunit directory of this repo.
+
+This phpunit.xml file will allow us to directly run the command ```vendor/bin/phpunit``` and will then execute the tests based on the configurations done in the file. Through this file we have options to run particular test suites, exclude files and even add colors to the execution results in our terminal. See below - 
+
+![Php-Unit-xml-exec][Php-Unit-xml-exec]
 
 
 
@@ -342,3 +346,4 @@ It also allows us to no longer have to specify the directory to look for tests i
 [Dry-Run]: https://github.com/Sabbi0612/phpunit/blob/master/images/Dry-Run.png
 [Dry-Run-2]: https://github.com/Sabbi0612/phpunit/blob/master/images/Dry-Run-2.png
 [Code-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Code-Passed.png
+[Php-Unit-xml-exec]: https://github.com/Sabbi0612/phpunit/blob/master/images/Php-Unit-xml-exec.png
