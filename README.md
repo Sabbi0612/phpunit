@@ -343,6 +343,11 @@ On executing this, it will give us a **failing test**.
 
 Hence, we need to make following changes to our **Receipt.php** file as well. The Receipt.php File would finally look like this as shown below in Screenshot
 
+![Dummy-Object-Passed][Dummy-Object-Passed]
+
+Let's go back to our terminal and rerun our test, 
+We'll see that we're back to our full list of greens. So, this is how easy it is to use a dummy object. Notice, it does not have to be anything complex or anything extensive. It just needs to be something that has no actual use in our method under test, but is simply needed for this signature to pass.
+
 
 
 
