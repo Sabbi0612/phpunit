@@ -303,8 +303,32 @@ So the commands would look like this -
 * **Run tests based on a PHPUnit.xml file**
 It also allows us to no longer have to specify the directory to look for tests in. Instead the XML file acts as a basic configuration file for us. We can view it's contents in **_phpunit.xml_** file in the main phpunit directory of this repo.
 This phpunit.xml file will allow us to directly run the command **_vendor/bin/phpunit_** and will then execute the tests based on the configurations done in the file. Through this file we have options to run particular test suites, exclude files and even add colors to the execution results in our terminal. See below - 
+     ![Php-Unit-xml-exec][Php-Unit-xml-exec]
 
-![Php-Unit-xml-exec][Php-Unit-xml-exec]
+
+## Test Doubles
+It is a generic term for any case where we replace the production object for testing purposes.
+For more information on test doubles follow [this link](https://www.martinfowler.com/bliki/TestDouble.html)
+
+When someone is talking about a test double, they're referring to the generic term for a variation of one of these five different objects. Each of these is designed to solve different variations of our three main reasons for using a test double. These are - 
+* Dummy: Replaces an object typically as an input to a method, that isn't used or needed for the test.
+* Fake: Replaces an object in which we need a simplified version of the object, typically to achieve speed improvements or eliminate side effects.
+* Stub: Provides a preset answer to method calls that we have decided ahead of time.
+* Spy: Acts as a higher level stub as it allows us to also record information about what happened with this test double.
+* Mock: It acts as a higher level stub as they are pre-programmed with expectations, including the ability to both respond to the calls they know about and don't know about.
+
+So this becomes really important to note what problem we are attempting to solve and focus on building a double that meets that requirement.
+We'll discuss about these in detail further in the documentation.
+
+### Three main reasons for using a Test Double
+* **Replace a dependency** - Our test doubles replace portions of our 'in-use' dependencies, or inputs, 
+* **Ensure a condition occurs** - To ensure we can test our code in isolation and have complete coverage.
+* **Improve the test performance** - Focus on just the single unit or method at hand.
+
+
+
+
+
 
 
 
