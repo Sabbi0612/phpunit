@@ -327,6 +327,16 @@ We'll discuss about these in detail further in the documentation.
 * **Improve the test performance** - Focus on just the single unit or method at hand.
 
 
+### Build a "Dummy" Object
+Since we know a dummy object is an object or value that has no use in our method under test, but is needed for the signature.
+So we can go back to our ReceiptTest.php file and add coupon variable as a second input and assign it a value null so the NULL value will be our DUMMY object. if we run this through the Terminal, our test will pass as **php doesn't care that we passed an extra input to our total method.**
+
+**Now let's see how assigning some value to coupon variable will affect our test**
+
+
+
+
+
 
 
 
