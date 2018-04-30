@@ -333,6 +333,16 @@ So we can go back to our ReceiptTest.php file and add coupon variable as a secon
 
 **Now let's see how assigning some value to coupon variable will affect our test**
 
+File changes made are as shown in the below screenshot - 
+
+![Dummy-Object][Dummy-Object]
+
+On executing this, it will give us a **failing test**. 
+
+![Dummy-Test-Object-Fails][Dummy-Test-Object-Fails]
+
+Hence, we need to make following changes to our **Receipt.php** file as well. The Receipt.php File would finally look like this as shown below in Screenshot
+
 
 
 
@@ -381,3 +391,6 @@ So we can go back to our ReceiptTest.php file and add coupon variable as a secon
 [Dry-Run-2]: https://github.com/Sabbi0612/phpunit/blob/master/images/Dry-Run-2.png
 [Code-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Code-Passed.png
 [Php-Unit-xml-exec]: https://github.com/Sabbi0612/phpunit/blob/master/images/Php-Unit-xml-exec.png
+[Dummy-Object]: https://github.com/Sabbi0612/phpunit/blob/master/images/Dummy-Object.png
+[Dummy-Test-Object-Fails]: https://github.com/Sabbi0612/phpunit/blob/master/images/Dummy-Test-Object-Fails.png
+[Dummy-Object-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Dummy-Object-Passed.png
