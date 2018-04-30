@@ -302,8 +302,7 @@ So the commands would look like this -
 
 * **Run tests based on a PHPUnit.xml file**
 It also allows us to no longer have to specify the directory to look for tests in. Instead the XML file acts as a basic configuration file for us. We can view it's contents in **_phpunit.xml_** file in the main phpunit directory of this repo.
-
-This phpunit.xml file will allow us to directly run the command ```vendor/bin/phpunit``` and will then execute the tests based on the configurations done in the file. Through this file we have options to run particular test suites, exclude files and even add colors to the execution results in our terminal. See below - 
+This phpunit.xml file will allow us to directly run the command **_vendor/bin/phpunit_** and will then execute the tests based on the configurations done in the file. Through this file we have options to run particular test suites, exclude files and even add colors to the execution results in our terminal. See below - 
 
 ![Php-Unit-xml-exec][Php-Unit-xml-exec]
 
