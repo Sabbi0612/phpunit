@@ -291,7 +291,7 @@ For our previous test the command would look like - **_vendor/bin/phpunit tests/
 
 * **Run the tests present in a single test file**
 ```vendor/bin/phpunit dirname/filename.php```
-For our previous test the command would look like - **_vendor/bin/phpunit tests/RecieptTest.php_**
+For our previous test the command would look like - **_vendor/bin/phpunit tests/ReceiptTest.php_**
 
 
 * **Run a test related to particular method or class**
@@ -416,7 +416,7 @@ See how the code changes from a Plain Stub to a Mock.
 * We'll first modify our test for the post tax total method to use a predefined value for the items, tax, and coupon.
 hence, 
 ```php
-        $items = [1,2,5,8];
+		$items = [1,2,5,8];
 		$tax = 0.20;
 		$coupon = null;
 ```
@@ -431,6 +431,39 @@ hence,
 
 **_Notice we now have five assertions for our four tests. This is because our mock is now a new assertion. Our mock setup has to fully pass. The methods are only called once and their methods have the correct inputs.
 This is one of the reasons mocks are widely used. It allows you to assert that the inputs to those methods that you're mocking are exactly correct._**
+
+
+## Write an Exception-based Test
+Exceptions are a common way of throwing errors to the user, or to other parts of your application, to then register that a failure occurred and to then understand how to handle those particular cases.
+
+Here we'll assert that an exception is thrown.
+
+Here's what is code is added to our ReceiptTest.php file.
+```php
+	public function testTotalException() {
+		$input = [0,2,5,8];
+		$coupon = 1.20;
+		$this->expectException('BadMethodCallException');
+		$this->Receipt->total($input, $coupon);
+	}
+```
+
+### Understanding the Code
+* Since we have no output to test this time, So we start with assigning values to the $input and $coupon.
+* Now in the 4th line, we can test for the exception directly, by using the PHP Unit Method, **_expectException_**. This method takes the class name of the exception that it expects.
+Note: There are also corresponding methods available to test for the expected exception message, and corresponding code.
+
+**_Run the test to see it fail._**
+
+So it is time to edit our source code accordingly.
+
+![Exception-Test][Exception-Test]
+
+
+
+
+
+
 
 
 
@@ -493,3 +526,4 @@ This is one of the reasons mocks are widely used. It allows you to assert that t
 [Stub-Test-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Stub-Test-Passed.png
 [Mock-Code]: https://github.com/Sabbi0612/phpunit/blob/master/images/Mock-Code.png
 [Mock-Code-Test]: https://github.com/Sabbi0612/phpunit/blob/master/images/Mock-Code-Test.png
+[Exception-Test]: https://github.com/Sabbi0612/phpunit/blob/master/images/Exception-Test.png
