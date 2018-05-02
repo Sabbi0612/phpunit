@@ -348,6 +348,63 @@ Hence, we need to make following changes to our **Receipt.php** file as well. Th
 Let's go back to our terminal and rerun our test, 
 We'll see that we're back to our full list of greens. So, this is how easy it is to use a dummy object. Notice, it does not have to be anything complex or anything extensive. It just needs to be something that has no actual use in our method under test, but is simply needed for this signature to pass.
 
+### Building Test Stubs
+As explained earlier, Stubs in PhpUnit provides a preset answer to method calls that we have decided ahead of time.
+
+Here's how we create a Test Stub in PHPUnit. **(Please read through the Notes in the code for better understanding**
+
+```php
+	/** 
+	* Our test here will build a mock instance of the Receipt class so we can 
+	* replace the instance we are using and instead call it, and then return 
+	* the sum from the two calls to the other methods, 
+	* so we're testing this in isolation.
+	*/
+	public function testPostTaxTotal() {
+		$Receipt = $this->getMockBuilder('TDD\Receipt')
+			->setMethods(['tax', 'total'])
+			->getMock();
+		$Receipt->method('total')
+			->will($this->returnValue(10.00));
+		$Receipt->method('tax')
+			->will($this->returnValue(1.00));
+		$result = $Receipt->postTaxTotal([1,2,5,8], 0.20, null);
+		$this->assertEquals(11.00, $result);
+	} 
+```
+
+### Understanding the code
+* Write **_$this->getMockBuilder_** and then pass in the string with the namespace name of the class that we want to build. In this case, **TDD\Receipt**. The only builder PHPUnit provides is a MockBuilder, but we can ignore some of the specific features of a mock test class and instead use it to **build out a stub**. Next, we need to define the **methods our stub** will respond to, so we'll add, - >setMethods(). 
+* **_setMethods_** call takes an array of methods for the test double to respond to. In this case, it will respond to the method calls for tax and total, so we'll add those two strings to an array as the parameter for setMethods.
+* At this point, we can now return the instance of the mock with a call to **_getMock_**
+* So now we'll need our doubles saved to a local variable, so we'll modify the first line and set it to a local $Receipt variable. So it makes our code be  - ```$Receipt = $this->getMockBuilder('TDD\Receipt')```
+
+**(Now after this, we'll update our stub to respond to our two method calls for tax and total and then inform them to return the data that we want them to.)**
+* To do so, we will add **_$Receipt->method_** and then pass in the string name of the method that we want to define what exactly our stub will perform. In this case, we'll pass in total.
+* After this, we then call a method **_will_**. This method will simply says what exactly will that stubbed method do. In this case, this method will return a value equal to 10.00. So, we will do ```$this->returnValue(10.00)```
+* We now to repeat this for our tax method, which our tax method will return 1.00, so we'll add ```$Receipt->method('tax')```
+* Finally, we can repeat the pattern that we've seen in the past. We call the method and assert the result is what we expect. We add $result is equal to our $Receipt instance - >postTaxTotal with an array and then pass in the value 0.20 and then null.
+* Notice we are using values that wouldn't actually make sense given what our stub is returning. This is going to assure you that the stub is returning that stubbed result.
+
+Now that we understood that what's there in our test we run our test.
+
+![Test-Stub][Test-Stub]
+
+As expected the test has failed. We'll add the code below at the end of our Receipt.php file.
+
+```php
+
+	public function postTaxTotal($items, $tax, $coupon) {
+		$subtotal = $this->total($items, $coupon);
+		return $subtotal + $this->tax($subtotal, $tax);
+	}
+```
+Now run the test again and see it PASSED. This is how easy and quick it is to use a stub to replace some basic methods inside of your classes that you're testing.
+
+![Stub-Test-Passed][Stub-Test-Passed]
+
+
+
 
 
 
@@ -399,3 +456,5 @@ We'll see that we're back to our full list of greens. So, this is how easy it is
 [Dummy-Object]: https://github.com/Sabbi0612/phpunit/blob/master/images/Dummy-Object.png
 [Dummy-Test-Object-Fails]: https://github.com/Sabbi0612/phpunit/blob/master/images/Dummy-Test-Object-Fails.png
 [Dummy-Object-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Dummy-Object-Passed.png
+[Test-Stub]: https://github.com/Sabbi0612/phpunit/blob/master/images/Test-Stub.png
+[Stub-Test-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Stub-Test-Passed.png
