@@ -383,14 +383,14 @@ Here's how we create a Test Stub in PHPUnit. **(Please read through the Notes in
 * To do so, we will add **_$Receipt->method_** and then pass in the string name of the method that we want to define what exactly our stub will perform. In this case, we'll pass in total.
 * After this, we then call a method **_will_**. This method will simply says what exactly will that stubbed method do. In this case, this method will return a value equal to 10.00. So, we will do ```$this->returnValue(10.00)```
 * We now to repeat this for our tax method, which our tax method will return 1.00, so we'll add ```$Receipt->method('tax')```
-* Finally, we can repeat the pattern that we've seen in the past. We call the method and assert the result is what we expect. We add $result is equal to our $Receipt instance - >postTaxTotal with an array and then pass in the value 0.20 and then null.
+* Finally, we can repeat the pattern that we've seen in the past. We call the method and assert the result is what we expect. We add **_$result is equal to our $Receipt instance - >postTaxTotal_** with an array and then pass in the value 0.20 and then null.
 * Notice we are using values that wouldn't actually make sense given what our stub is returning. This is going to assure you that the stub is returning that stubbed result.
 
 Now that we understood that what's there in our test we run our test.
 
 ![Test-Stub][Test-Stub]
 
-As expected the test has failed. We'll add the code below at the end of our Receipt.php file.
+As expected the test has failed. So to make our test pass, we'll add the code below at the end of our Receipt.php file.
 
 ```php
 
@@ -402,6 +402,19 @@ As expected the test has failed. We'll add the code below at the end of our Rece
 Now run the test again and see it PASSED. This is how easy and quick it is to use a stub to replace some basic methods inside of your classes that you're testing.
 
 ![Stub-Test-Passed][Stub-Test-Passed]
+
+## Build a Test Mock 
+In this we'll be converting our stub into a mock. We'll make changes to our existing testPostTaxTotal function in the ReceiptTest.php file only.
+
+Note: The main difference between a plain stub and a mock is that mock has expectations about what stub methods are called and the inputs to that stub.
+
+See how the code changes from a Plain Stub to a Mock.
+
+![Mock-Code][Mock-Code]
+
+### Understanding the Code.
+* We'll first modify our test for the post tax total method to use a predefined value for the items, tax, and coupon.
+
 
 
 
@@ -458,3 +471,4 @@ Now run the test again and see it PASSED. This is how easy and quick it is to us
 [Dummy-Object-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Dummy-Object-Passed.png
 [Test-Stub]: https://github.com/Sabbi0612/phpunit/blob/master/images/Test-Stub.png
 [Stub-Test-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Stub-Test-Passed.png
+[Mock-Code]: https://github.com/Sabbi0612/phpunit/blob/master/images/Mock-Code.png

@@ -40,19 +40,21 @@ class ReceiptTest extends TestCase {
 			'When summing the total should equal 12'
 		);
 	}
-	/** 
-	* Our test here will build a mock instance of the Receipt class so we can 
-	* replace the instance we are using and instead call it, and then return 
-	* the sum from the two calls to the other methods, 
-	* so we're testing this in isolation.
-	*/
+	
 	public function testPostTaxTotal() {
+		$items = [1,2,5,8];
+		$tax = 0.20;
+		$coupon = null;
 		$Receipt = $this->getMockBuilder('TDD\Receipt')
 			->setMethods(['tax', 'total'])
 			->getMock();
-		$Receipt->method('total')
+		$Receipt->expects($this->once())
+			->method('total')
+			->with($items, $coupon)
 			->will($this->returnValue(10.00));
-		$Receipt->method('tax')
+		$Receipt->expects($this->once())
+			->method('tax')
+			->with(10.00, $tax)
 			->will($this->returnValue(1.00));
 		$result = $Receipt->postTaxTotal([1,2,5,8], 0.20, null);
 		$this->assertEquals(11.00, $result);
