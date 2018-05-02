@@ -414,6 +414,26 @@ See how the code changes from a Plain Stub to a Mock.
 
 ### Understanding the Code.
 * We'll first modify our test for the post tax total method to use a predefined value for the items, tax, and coupon.
+hence, 
+```php
+        $items = [1,2,5,8];
+		$tax = 0.20;
+		$coupon = null;
+```
+* We will now modify our stub to set up expectations for both the number of times we will call our mark methods as well as what inputs to expect. So we add before our method call, we add ```$Receipt->expects($this->once())```. 
+**Note: There are lots of ways in which we can define this expects including at least once, exactly, passing in some integer value and never.**
+* After this, we can ensure we get passed the correct parameters to our total method call. We can add ```->with($items, $coupon)```. 
+* And just like this we turned our stub into a mock.
+* We'll now modify the setup for the **tax** call to do the same thing.
+* Now we can run our test and see if anything changed.
+
+![Mock-Code-Test][Mock-Code-Test]
+
+**_Notice we now have five assertions for our four tests. This is because our mock is now a new assertion. Our mock setup has to fully pass. The methods are only called once and their methods have the correct inputs.
+This is one of the reasons mocks are widely used. It allows you to assert that the inputs to those methods that you're mocking are exactly correct._**
+
+
+
 
 
 
@@ -472,3 +492,4 @@ See how the code changes from a Plain Stub to a Mock.
 [Test-Stub]: https://github.com/Sabbi0612/phpunit/blob/master/images/Test-Stub.png
 [Stub-Test-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Stub-Test-Passed.png
 [Mock-Code]: https://github.com/Sabbi0612/phpunit/blob/master/images/Mock-Code.png
+[Mock-Code-Test]: https://github.com/Sabbi0612/phpunit/blob/master/images/Mock-Code-Test.png
