@@ -479,7 +479,6 @@ We can generate code coverage in two basic forms: an **HTML version** and an **X
 
 
 
-
 #### This Repo and it's content is inspired by the LinkedIn Learning course PHP: Test-Driven Development with PHPUnit by Justin Yost
 
 
