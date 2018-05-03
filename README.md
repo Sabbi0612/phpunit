@@ -556,7 +556,7 @@ Try this one one out with our current understanding of TDD. For reference, our c
 
 * Secondly, we'll jump to the changes made to the Receipt.php file in our src directory.
 * Here we have just created a method where we are rounding off the input to 2 decimal places. That's it.
-
+<br/>
 
 
 ## Code Coverage in PhpUnit
@@ -597,6 +597,8 @@ Opening a coverage file will look like this -
 Rest the report is self explanatory and going through it once will give more clarity of what is denoted by the different elements of the report.
 
 **_Note: Please note that we might encounter an error saying "No code coverage driver is available" in our terminal while generating our report. This issue is due to php version installed. We will require PHP version >= 7.0.0 to generate hassle free reports_**
+
+#### I hope this documentation has been helpful to you in understanding Test-Driven Developmemt using PHPUnit. The Sole purpose of this doco is to impart even the Beginners in PHPunit and Test-Driven Development the knowledge that will get them upto the par so they can start writing their Code in TDD.
 
 ## Content Courtesy
 **This Repo and it's content is inspired by the LinkedIn Learning course PHP: Test-Driven Development with PHPUnit by Justin Yost**
