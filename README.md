@@ -466,20 +466,49 @@ So it is time to edit our source code accordingly.
 
 So this is how we work with exceptions and write tests for them accordingly.
 
+## Lets solve a Problem statement
+
 ## Code Coverage in PhpUnit
 Code Coverage is a measure of how much or rather what percentage of lines in our codebase is covered by our test. In short, it tells us these lines were run and for what particular test. 
 The isolation of our test permits us to see the coverage of our code; simply, as the code we run based on the particular test for that particular method. 
 
 **Question:** "Is there a magic number at which I've solved all of my prompts with bugs and other issues?
-**Answer:** There just isn't a magic percentage of code coverage that will solve all of your problems, but code coverage is still the best measure we have for producing well-tested code.
+**Answer:** The answer is NO. There just isn't a magic percentage of code coverage that will solve all of your problems, but code coverage is still the best measure we have for producing well-tested code.
 
 ### Generate Code Coverage Reports
-We can generate code coverage in two basic forms: an **HTML version** and an **XML version**
+We can generate code coverage in two basic forms: an **HTML version** and an **XML version**.
+The lines 47 - 60 of our code in the file **_phpunit.xml_** file is resposible for generating the xml and html reports for us.
+We can clearly see in the code that - first we generate code coverage report in a Clover XML format and second is that we generate it in an HTML format.
 
+### Steps
+* To generate the Code Coverage reort we just need to go to our terminal and run the command **_vendor/bin/phpunit_** which will actually run our tests and simultaneously create reports for us as well.
 
+	 ![Terminal-Messages][Terminal-Messages]
 
+* Running this command will add a new directory in our repo. i.e **tmp/**
+* Going into that directory we'll see **coverage/** directory inside which we have clover.xml file as well as index.html in the html/ directory.
 
-#### This Repo and it's content is inspired by the LinkedIn Learning course PHP: Test-Driven Development with PHPUnit by Justin Yost
+So this is how easy it was to create the code coverage files. 
+Opening a coverage file will look like this - 
+
+![Code-Coverage][Code-Coverage]
+
+### Elements of the Coverage Report
+* We can see a few different aspects of what our coverage provides for us right off the bat. First of, notice we list coverage for -  
+  * the **lines**, 
+  * the **functions and methods** 
+  * and the **classes and traits**.
+* If we look in more detail, specifically at Receipt class by clicking on the Receipt.php link, we have a similar coverage report for the classes it includes, listing whether now we cover that class fully, the functions and methods that we cover and then, the lines in that class.
+* **CRAP** - We might also observe that there's a something mentioned as CRAP. This number called as the Crap number. It stands for **Change, Risk Anti-Patterns**. This value is calculated based on the cyclomatic complexity and code coverage of a unit of code.
+  * Code that is not too complex and has an adequate test coverage, will have a low Crap index. 
+  * This **index** is lowered when you refactor your code to be simpler or if lower cyclomatic complexity and add additional code coverage.
+
+Rest the report is self explanatory and going through it once will give more clarity of what is denoted by the different elements of the report.
+
+**_Note: Please note that we might encounter an error saying "No code coverage driver is available" in our terminal while generating our report. This issue is due to php version installed. We will require PHP version >= 7.0.0 to generate hassle free reports_**
+
+## Courtesy
+**This Repo and it's content is inspired by the LinkedIn Learning course PHP: Test-Driven Development with PHPUnit by Justin Yost**
 
 
 [Tdd-pattern]: https://github.com/Sabbi0612/phpunit/blob/master/images/Tdd-pattern1.png
@@ -498,3 +527,5 @@ We can generate code coverage in two basic forms: an **HTML version** and an **X
 [Mock-Code]: https://github.com/Sabbi0612/phpunit/blob/master/images/Mock-Code.png
 [Mock-Code-Test]: https://github.com/Sabbi0612/phpunit/blob/master/images/Mock-Code-Test.png
 [Exception-Test]: https://github.com/Sabbi0612/phpunit/blob/master/images/Exception-Test.png
+[Terminal-Messages]: https://github.com/Sabbi0612/phpunit/blob/master/images/Terminal-Messages.png
+[Code-Coverage]: https://github.com/Sabbi0612/phpunit/blob/master/images/Code-Coverage.png
