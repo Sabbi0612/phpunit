@@ -13,7 +13,6 @@ Lets try to break it down to understand better.
 * Typically that it correctly performs as expected. 
 * Isolated unit of code - (a single function or method) the smallest unit of code that can be independently run and operated. 
 <br/>
-<br/>
 
 ## Then!! What is Test-Driven Development?
 
@@ -28,7 +27,7 @@ Lets try to break it down to understand better.
 ![TDD pattern][Tdd-pattern]
 <br/>
 
-### Significance of following TDD for a developer
+### Significance of following TDD
 
 TDD is one the biggest things, you as a developer and software engineer can do to level up yourself. It takes you from a style of manual refreshing, testing and looking at things to figure out if something worked to instead validating your software and proving it works the way it’s intended.
 <br/>
@@ -74,6 +73,7 @@ TDD is one the biggest things, you as a developer and software engineer can do t
 **_Before we move forward to write our first Unit test, we need to have some bit of knowledge of Object-Oriented PHP w.r.t concepts like namespaces, instantiation etc._**
 <br/>
 <br/>
+<br/>
 
 ## Our First Unit Test
 
@@ -117,7 +117,7 @@ class ReceiptTest extends TestCase {
 }
 ```
 **Important Note:** 
-The assertion methods typically follow a similar pattern: three inputs. First is the _expected value, _second is the actual value, and, finally, a message displayed in the case of a failure._
+The assertion methods typically follow a similar pattern: three inputs. First is the **_expected value, _second is the actual value, and, finally, a message displayed in the case of a failure._**
 So in the above piece of code: 15 will be expected value, The 0,2,5,8 are the actual values in the array and "When summing the total should equal 15" is the message to displayed when condition is failed.
 
 TO know about the tons of other PHPUnit assertions and their usage, Go to [this link](https://phpunit.de/manual/6.5/en/appendixes.assertions.html)
@@ -129,18 +129,15 @@ To run the test -
 * This command will run all thse test files inside the **tests** directory.
 
 ### Results 
-If the Expected value is not equal to the actual value (after summing up the elements of the array), then it will display the following report in the Terminal.
+* If the Expected value is not equal to the actual value (after summing up the elements of the array), then it will display the following report in the Terminal.
 
-![Test Failed][Test-Failed]
+	 ![Test Failed][Test-Failed]
 
-If the Expected value equals the actual value then the below result will be displayed. 
+* If the Expected value equals the actual value then the below result will be displayed. 
 
-![Test Passed][Test-Passed]
+	 ![Test Passed][Test-Passed]
 
-
-
-Since Now we have created our first unit test, its time to *Refactor* our test.
-Going a bit deeper into writing Unit test we follow a certain pattern of **_Arrange-Act-Assert_**
+* Since Now we have created our first unit test, its time to *Refactor* our test. Going a bit deeper into writing Unit test we follow a certain pattern of **_Arrange-Act-Assert_**
 
 ### What is Arrange-Act-Assert Pattern?
 * **_Arrange_** is where we arrange all the necessary preconditions and inputs for our test case. After this,
@@ -154,7 +151,7 @@ Going a bit deeper into writing Unit test we follow a certain pattern of **_Arra
 * Our test should also test only a few things at once
 * Finally, if we find yourself having a lot of trouble with writing a test, that may be a hint to we need to look at our implementation and find a new solution. 
 
-### Let's refactor our previous Test in this pattern
+### Let's refactor our previous test in this pattern
 After refactoring our code will look like this. (Read code comments for better understanding)
 
 ```php
@@ -188,14 +185,17 @@ class ReceiptTest extends TestCase {
 Here the two methods, `setUp` and `tearDown` are the ones that are called by PHPUnit before every test method.
 * **setUp** permits us to create instances of classes or anything else that we need before running our test method and
 * **tearDown** lets us remove any of those instances to ensure our tests are running in isolation.
-
+<br/>
+<br/>
 
 ### So overall this is how our Unit test has been refactored - 
 
 ![Code-Refactored][Code-Refactored]
 
-This was all aligned more towards Unit Testing..
-
+**This was all aligned more towards Unit Testing..**
+<br/>
+<br/>
+<br/>
 
 ## Let's Practice Test Driven Development Now!!
 
@@ -282,6 +282,8 @@ class Receipt {
 	}
 }
 ```
+<br/>
+<br/>
 
 ## Filter out Test Execution
 
@@ -312,7 +314,8 @@ It also allows us to no longer have to specify the directory to look for tests i
 This phpunit.xml file will allow us to directly run the command **_vendor/bin/phpunit_** and will then execute the tests based on the configurations done in the file. Through this file we have options to run particular test suites, exclude files and even add colors to the execution results in our terminal. See below - 
 
      ![Php-Unit-xml-exec][Php-Unit-xml-exec]
-
+<br/>
+<br/>
 
 ## Test Doubles
 It is a generic term for any case where we replace the production object for testing purposes.
@@ -333,29 +336,33 @@ We'll discuss about these in detail further in the documentation.
 * **Ensure a condition occurs** - To ensure we can test our code in isolation and have complete coverage.
 * **Improve the test performance** - Focus on just the single unit or method at hand.
 
+<br/>
+<br/>
 
+## Explaining different Test Doubles
 ### Build a "Dummy" Object
 Since we know a dummy object is an object or value that has no use in our method under test, but is needed for the signature.
-So we can go back to our ReceiptTest.php file and add coupon variable as a second input and assign it a value null so the NULL value will be our DUMMY object. if we run this through the Terminal, our test will pass as **php doesn't care that we passed an extra input to our total method.**
+So we can go back to our **_ReceiptTest.php_** file and add coupon variable as a second input and assign it a value null so the NULL value will be our DUMMY object. if we run this through the Terminal, our test will pass as **php doesn't care that we passed an extra input to our total method.**
 
 **Now let's see how assigning some value to coupon variable will affect our test**
 
-File changes made are as shown in the below screenshot - 
+* File changes made are as shown in the below screenshot - 
 
-![Dummy-Object][Dummy-Object]
+	 ![Dummy-Object][Dummy-Object]
 
-On executing this, it will give us a **failing test**. 
+* On executing this, it will give us a **failing test**. 
 
-![Dummy-Test-Object-Fails][Dummy-Test-Object-Fails]
+	 ![Dummy-Test-Object-Fails][Dummy-Test-Object-Fails]
 
-Hence, we need to make following changes to our **Receipt.php** file as well. The Receipt.php File would finally look like this as shown below in Screenshot
+* Hence, we need to make following changes to our **Receipt.php** file as well. The Receipt.php File would finally look like this as shown below in Screenshot
 
-![Dummy-Object-Passed][Dummy-Object-Passed]
+	 ![Dummy-Object-Passed][Dummy-Object-Passed]
 
-Let's go back to our terminal and rerun our test, 
-We'll see that we're back to our full list of greens. So, this is how easy it is to use a dummy object. Notice, it does not have to be anything complex or anything extensive. It just needs to be something that has no actual use in our method under test, but is simply needed for this signature to pass.
+* Let's go back to our terminal and re-run our test, 
+* We'll see that we're back to our full list of Greens. So, this is how easy it is to use a dummy object. Notice, it does not have to be anything complex or anything extensive. It just needs to be something that has no actual use in our method under test, but is simply needed for this signature to pass.
+<br/>
 
-### Building Test Stubs
+### Building Test "Stubs"
 As explained earlier, Stubs in PhpUnit provides a preset answer to method calls that we have decided ahead of time.
 
 Here's how we create a Test Stub in PHPUnit. **(Please read through the Notes in the code for better understanding**
@@ -380,7 +387,7 @@ Here's how we create a Test Stub in PHPUnit. **(Please read through the Notes in
 	} 
 ```
 
-### Understanding the code
+#### Understanding the code
 * Write **_$this->getMockBuilder_** and then pass in the string with the namespace name of the class that we want to build. In this case, **TDD\Receipt**. The only builder PHPUnit provides is a MockBuilder, but we can ignore some of the specific features of a mock test class and instead use it to **build out a stub**. Next, we need to define the **methods our stub** will respond to, so we'll add, - >setMethods(). 
 * **_setMethods_** call takes an array of methods for the test double to respond to. In this case, it will respond to the method calls for tax and total, so we'll add those two strings to an array as the parameter for setMethods.
 * At this point, we can now return the instance of the mock with a call to **_getMock_**
@@ -409,17 +416,18 @@ As expected the test has failed. So to make our test pass, we'll add the code be
 Now run the test again and see it PASSED. This is how easy and quick it is to use a stub to replace some basic methods inside of your classes that you're testing.
 
 ![Stub-Test-Passed][Stub-Test-Passed]
+<br/>
 
-## Build a Test Mock 
-In this we'll be converting our stub into a mock. We'll make changes to our existing testPostTaxTotal function in the ReceiptTest.php file only.
+### Build a Test "Mock" 
+In this we'll be converting our stub into a mock. We'll make changes to our existing **_testPostTaxTotal_** function in the ```ReceiptTest.php``` file only.
 
-Note: The main difference between a plain stub and a mock is that mock has expectations about what stub methods are called and the inputs to that stub.
+**Please Note: The main difference between a plain stub and a mock is that mock has expectations about what stub methods are called and the inputs to that stub.**
 
 See how the code changes from a Plain Stub to a Mock.
 
 ![Mock-Code][Mock-Code]
 
-### Understanding the Code.
+#### Understanding the Code.
 * We'll first modify our test for the post tax total method to use a predefined value for the items, tax, and coupon.
 hence, 
 ```php
@@ -438,9 +446,9 @@ hence,
 
 **_Notice we now have five assertions for our four tests. This is because our mock is now a new assertion. Our mock setup has to fully pass. The methods are only called once and their methods have the correct inputs.
 This is one of the reasons mocks are widely used. It allows you to assert that the inputs to those methods that you're mocking are exactly correct._**
+<br/>
 
-
-## Write an Exception-based Test
+### Write an Exception-based Test
 Exceptions are a common way of throwing errors to the user, or to other parts of your application, to then register that a failure occurred and to then understand how to handle those particular cases.
 
 Here we'll assert that an exception is thrown.
@@ -455,25 +463,25 @@ Here's what is code is added to our ReceiptTest.php file.
 	}
 ```
 
-### Understanding the Code
+#### Understanding the Code
 * Since we have no output to test this time, So we start with assigning values to the $input and $coupon.
 * Now in the 4th line, we can test for the exception directly, by using the PHP Unit Method, **_expectException_**. This method takes the class name of the exception that it expects.
 Note: There are also corresponding methods available to test for the expected exception message, and corresponding code.
 
 **_Run the test to see it fail._**
 
-So it is time to edit our source code accordingly.
+* So it is time to edit our source code accordingly.
 
-![Exception-Test][Exception-Test]
+	 ![Exception-Test][Exception-Test]
 
 * We have imported the \BadMethodCallException into our namespace.
-* Logic: We can add if coupon is greater than 1.00, after all, we may want to allow a 100% off coupon in certain cases.
+* **Logic:** We can add if coupon is greater than 1.00, after all, we may want to allow a 100% off coupon in certain cases.
 * Run the Test again.
 * This time the test passes.
 
 So this is how we work with exceptions and write tests for them accordingly.
 
-## Lets solve a Problem Statement.
+## Let us solve a Problem Statement.
 
 ### Use Case:
 ```We want to add a method to ensure that the float values produced are valid two-digit floats and we always have them casted to as such. In this case, we want to ensure that when we have one, we always get 1.00, or when we have 1.1, we always get 1.10, or correspondingly, if we have 1.111, i.e., three ones after the decimal place, we only get back 1.11.```
@@ -486,7 +494,7 @@ In short, Test Cases to handle are:
 
 Try this one one out with our current understanding of TDD. For reference, our code at the end of ReceiptTest.php file would look like this - 
 
-### How to solve using TDD**
+### How to solve this using TDD
 **Steps:**
 * Lets go back to our ```ReceiptTest.php``` file and make some changes there.
 * We'll add our test at the end of the file and hence, the code looks like this.
@@ -540,11 +548,11 @@ Try this one one out with our current understanding of TDD. For reference, our c
   * This time we used a different assertion method, **_assertSame_**. assertSame represents a triple equal comparisson on the two values.
   * So for this method we take $expected var as the first input, we'll add the call to $this->Receipt->currencyAmt and pass in our $input value and then finally, we'll pass in the $msg var as the final input to our assertSame call.
   * The method **_provideCurrencyAmt()_** that we are going to write now will act as a data provider to the above writen method **_testCurrencyAmt()_** which is mentioned by this codeblock in the code as well.
-		```php
-			/**
-			 * @dataProvider provideCurrencyAmt
-			 */
-		``` 
+```php
+	/**
+	 * @dataProvider provideCurrencyAmt
+	 */
+``` 
   * So just like all our data providers, this will return an array.
   * Rest the array that we've written is pretty much understandable and runs all the cases that we wanted to cover.
 
@@ -557,7 +565,7 @@ Try this one one out with our current understanding of TDD. For reference, our c
 Code Coverage is a measure of how much or rather what percentage of lines in our codebase is covered by our test. In short, it tells us these lines were run and for what particular test. 
 The isolation of our test permits us to see the coverage of our code; simply, as the code we run based on the particular test for that particular method. 
 
-**Question:** "Is there a magic number at which I've solved all of my prompts with bugs and other issues?
+**Question:** "Is there a magic number at which I've solved all of my prompts with bugs and other issues?<br/>
 **Answer:** The answer is NO. There just isn't a magic percentage of code coverage that will solve all of your problems, but code coverage is still the best measure we have for producing well-tested code.
 
 ### Generate Code Coverage Reports
