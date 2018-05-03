@@ -12,6 +12,8 @@ Lets try to break it down to understand better.
 * An idea of testing isolated units of code to ensure the code meets some parameters. 
 * Typically that it correctly performs as expected. 
 * Isolated unit of code - (a single function or method) the smallest unit of code that can be independently run and operated. 
+<br/>
+<br/>
 
 ## Then!! What is Test-Driven Development?
 
@@ -20,14 +22,17 @@ Lets try to break it down to understand better.
 **Some Good reads on TDD -**
 * [TDD by Agile Alliance](https://www.agilealliance.org/glossary/tdd)
 * [Realising quality improvement through TDD 2008 (Paper by : Pankaj Jalote)](https://people.engr.ncsu.edu/gjin2/Classes/591/Spring2017/case-tdd-b.pdf)
+<br/>
 
 ## TDD Pattern
 ![TDD pattern][Tdd-pattern]
-
+<br/>
 
 ### Significance of following TDD for a developer
 
 TDD is one the biggest things, you as a developer and software engineer can do to level up yourself. It takes you from a style of manual refreshing, testing and looking at things to figure out if something worked to instead validating your software and proving it works the way it’s intended.
+<br/>
+<br/>
 
 ## Installing PHPUnit
 
@@ -67,8 +72,10 @@ TDD is one the biggest things, you as a developer and software engineer can do t
 **_Hurray!! We are done with our Installation._**
 
 **_Before we move forward to write our first Unit test, we need to have some bit of knowledge of Object-Oriented PHP w.r.t concepts like namespaces, instantiation etc._**
+<br/>
+<br/>
 
-## First Unit Test
+## Our First Unit Test
 
 First of all we need a simple piece of code that we want to test. This file can be found by following **src/Receipt.php** in this repo.
 
@@ -466,7 +473,85 @@ So it is time to edit our source code accordingly.
 
 So this is how we work with exceptions and write tests for them accordingly.
 
-## Lets solve a Problem statement
+## Lets solve a Problem Statement.
+
+### Use Case:
+```We want to add a method to ensure that the float values produced are valid two-digit floats and we always have them casted to as such. In this case, we want to ensure that when we have one, we always get 1.00, or when we have 1.1, we always get 1.10, or correspondingly, if we have 1.111, i.e., three ones after the decimal place, we only get back 1.11.```
+
+In short, Test Cases to handle are:
+  * 1     => 1.00
+  * 1.1   => 1.10
+  * 1.11  => 1.11
+  * 1.111 => 1.11
+
+Try this one one out with our current understanding of TDD. For reference, our code at the end of ReceiptTest.php file would look like this - 
+
+### How to solve using TDD**
+**Steps:**
+* Lets go back to our ```ReceiptTest.php``` file and make some changes there.
+* We'll add our test at the end of the file and hence, the code looks like this.
+
+```php
+	/**
+	 * @dataProvider provideCurrencyAmt
+	 */
+	public function testCurrencyAmt($input, $expected, $msg) {
+		$this->assertSame(
+			$expected,
+			$this->Receipt->currencyAmt($input),
+			$msg
+		);
+	}
+
+	public function provideCurrencyAmt() {
+		return [
+			[1, 1.00, '1 should be transformed into 1.00'],
+			[1.1, 1.10, '1.1 should be transformed into 1.10'],
+			[1.11, 1.11, '1.11 should stay as 1.11'],
+			[1.111, 1.11, '1.111 should be transformed into 1.11'],
+		];
+	}
+```
+* As usual, running our test will fail and we already know the reason why.
+* So, accordingly we'll have to make changes to our **_Receipt.php_** file as well.
+* Receipt.php file now has the code below added to it -
+```php
+	public function currencyAmt($input) {
+		return $input;
+	}
+```	
+
+* On running this code Some of our test will pass but some will fail as well and here is how the output will look like.
+     ![Some-Passed][Some-Passed]
+
+* Let's go back to our Receipt.php file and make these changes - 
+```php
+	public function currencyAmt($input) {
+		return round($input, 2);
+	}
+```
+* Run the Test Again.. All Greens. Woohoo...!!!
+![All-Passed][All-Passed]
+
+### Understanding the Code
+
+* Let's start with the ReceiptTest.php file, 
+  * Firstly we add ```public function testCurrencyAmt().``` which takes 3 inputs i.e **$input, $expected and $msg**.
+  * This time we used a different assertion method, **_assertSame_**. assertSame represents a triple equal comparisson on the two values.
+  * So for this method we take $expected var as the first input, we'll add the call to $this->Receipt->currencyAmt and pass in our $input value and then finally, we'll pass in the $msg var as the final input to our assertSame call.
+  * The method **_provideCurrencyAmt()_** that we are going to write now will act as a data provider to the above writen method **_testCurrencyAmt()_** which is mentioned by this codeblock in the code as well.
+		```php
+			/**
+			 * @dataProvider provideCurrencyAmt
+			 */
+		``` 
+  * So just like all our data providers, this will return an array.
+  * Rest the array that we've written is pretty much understandable and runs all the cases that we wanted to cover.
+
+* Secondly, we'll jump to the changes made to the Receipt.php file in our src directory.
+* Here we have just created a method where we are rounding off the input to 2 decimal places. That's it.
+
+
 
 ## Code Coverage in PhpUnit
 Code Coverage is a measure of how much or rather what percentage of lines in our codebase is covered by our test. In short, it tells us these lines were run and for what particular test. 
@@ -481,7 +566,7 @@ The lines 47 - 60 of our code in the file **_phpunit.xml_** file is resposible f
 We can clearly see in the code that - first we generate code coverage report in a Clover XML format and second is that we generate it in an HTML format.
 
 ### Steps
-* To generate the Code Coverage reort we just need to go to our terminal and run the command **_vendor/bin/phpunit_** which will actually run our tests and simultaneously create reports for us as well.
+* To generate the Code Coverage report we just need to go to our terminal and run the command **_vendor/bin/phpunit_** which will actually run our tests and simultaneously create reports for us as well.
 
 	 ![Terminal-Messages][Terminal-Messages]
 
@@ -507,7 +592,7 @@ Rest the report is self explanatory and going through it once will give more cla
 
 **_Note: Please note that we might encounter an error saying "No code coverage driver is available" in our terminal while generating our report. This issue is due to php version installed. We will require PHP version >= 7.0.0 to generate hassle free reports_**
 
-## Courtesy
+## Content Courtesy
 **This Repo and it's content is inspired by the LinkedIn Learning course PHP: Test-Driven Development with PHPUnit by Justin Yost**
 
 
@@ -529,3 +614,5 @@ Rest the report is self explanatory and going through it once will give more cla
 [Exception-Test]: https://github.com/Sabbi0612/phpunit/blob/master/images/Exception-Test.png
 [Terminal-Messages]: https://github.com/Sabbi0612/phpunit/blob/master/images/Terminal-Messages.png
 [Code-Coverage]: https://github.com/Sabbi0612/phpunit/blob/master/images/Code-Coverage.png
+[Some-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/Some-Passed.png
+[All-Passed]: https://github.com/Sabbi0612/phpunit/blob/master/images/All-Passed.png
