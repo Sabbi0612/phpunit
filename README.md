@@ -459,50 +459,22 @@ So it is time to edit our source code accordingly.
 
 ![Exception-Test][Exception-Test]
 
+* We have imported the \BadMethodCallException into our namespace.
+* Logic: We can add if coupon is greater than 1.00, after all, we may want to allow a 100% off coupon in certain cases.
+* Run the Test again.
+* This time the test passes.
 
+So this is how we work with exceptions and write tests for them accordingly.
 
+## Code Coverage in PhpUnit
+Code Coverage is a measure of how much or rather what percentage of lines in our codebase is covered by our test. In short, it tells us these lines were run and for what particular test. 
+The isolation of our test permits us to see the coverage of our code; simply, as the code we run based on the particular test for that particular method. 
 
+**Question:** "Is there a magic number at which I've solved all of my prompts with bugs and other issues?
+**Answer:** There just isn't a magic percentage of code coverage that will solve all of your problems, but code coverage is still the best measure we have for producing well-tested code.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### Generate Code Coverage Reports
+We can generate code coverage in two basic forms: an **HTML version** and an **XML version**
 
 
 
