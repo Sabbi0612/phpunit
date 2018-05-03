@@ -186,7 +186,6 @@ Here the two methods, `setUp` and `tearDown` are the ones that are called by PHP
 * **setUp** permits us to create instances of classes or anything else that we need before running our test method and
 * **tearDown** lets us remove any of those instances to ensure our tests are running in isolation.
 <br/>
-<br/>
 
 ### So overall this is how our Unit test has been refactored - 
 
@@ -337,10 +336,9 @@ We'll discuss about these in detail further in the documentation.
 * **Improve the test performance** - Focus on just the single unit or method at hand.
 
 <br/>
-<br/>
 
 ## Explaining different Test Doubles
-### Build a "Dummy" Object
+### 1. Build a "Dummy" Object
 Since we know a dummy object is an object or value that has no use in our method under test, but is needed for the signature.
 So we can go back to our **_ReceiptTest.php_** file and add coupon variable as a second input and assign it a value null so the NULL value will be our DUMMY object. if we run this through the Terminal, our test will pass as **php doesn't care that we passed an extra input to our total method.**
 
@@ -362,7 +360,7 @@ So we can go back to our **_ReceiptTest.php_** file and add coupon variable as a
 * We'll see that we're back to our full list of Greens. So, this is how easy it is to use a dummy object. Notice, it does not have to be anything complex or anything extensive. It just needs to be something that has no actual use in our method under test, but is simply needed for this signature to pass.
 <br/>
 
-### Building Test "Stubs"
+### 2. Building Test "Stubs"
 As explained earlier, Stubs in PhpUnit provides a preset answer to method calls that we have decided ahead of time.
 
 Here's how we create a Test Stub in PHPUnit. **(Please read through the Notes in the code for better understanding**
@@ -418,7 +416,7 @@ Now run the test again and see it PASSED. This is how easy and quick it is to us
 ![Stub-Test-Passed][Stub-Test-Passed]
 <br/>
 
-### Build a Test "Mock" 
+### 3. Build a Test "Mock" 
 In this we'll be converting our stub into a mock. We'll make changes to our existing **_testPostTaxTotal_** function in the ```ReceiptTest.php``` file only.
 
 **Please Note: The main difference between a plain stub and a mock is that mock has expectations about what stub methods are called and the inputs to that stub.**
@@ -448,7 +446,7 @@ hence,
 This is one of the reasons mocks are widely used. It allows you to assert that the inputs to those methods that you're mocking are exactly correct._**
 <br/>
 
-### Write an Exception-based Test
+### 4. Write an Exception-based Test
 Exceptions are a common way of throwing errors to the user, or to other parts of your application, to then register that a failure occurred and to then understand how to handle those particular cases.
 
 Here we'll assert that an exception is thrown.
@@ -521,7 +519,7 @@ Try this one one out with our current understanding of TDD. For reference, our c
 	}
 ```
 * As usual, running our test will fail and we already know the reason why.
-* So, accordingly we'll have to make changes to our **_Receipt.php_** file as well.
+* So, accordingly we'll have to make changes to our ```Receipt.php``` file as well.
 * Receipt.php file now has the code below added to it -
 ```php
 	public function currencyAmt($input) {
@@ -541,7 +539,7 @@ Try this one one out with our current understanding of TDD. For reference, our c
 * Run the Test Again.. All Greens. Woohoo...!!!
 ![All-Passed][All-Passed]
 
-### Understanding the Code
+#### Understanding the Code
 
 * Let's start with the ReceiptTest.php file, 
   * Firstly we add ```public function testCurrencyAmt().``` which takes 3 inputs i.e **$input, $expected and $msg**.
