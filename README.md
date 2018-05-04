@@ -418,7 +418,7 @@ Now that we understood that what's there in our test we run our test.
 ```
 * Now run the test again and see it PASSED. This is how easy and quick it is to use a stub to replace some basic methods inside of your classes that you're testing.
 
-![Stub-Test-Passed][Stub-Test-Passed]
+	 ![Stub-Test-Passed][Stub-Test-Passed]
 <br/>
 
 ### 3. Build a Test "Mock" 
@@ -445,7 +445,7 @@ hence,
 * We'll now modify the setup for the **tax** call to do the same thing.
 * Now we can run our test and see if anything changed.
 
-![Mock-Code-Test][Mock-Code-Test]
+	 ![Mock-Code-Test][Mock-Code-Test]
 
 **_Notice we now have five assertions for our four tests. This is because our mock is now a new assertion. Our mock setup has to fully pass. The methods are only called once and their methods have the correct inputs.
 This is one of the reasons mocks are widely used. It allows you to assert that the inputs to those methods that you're mocking are exactly correct._**
@@ -533,6 +533,7 @@ Try this one one out with our current understanding of TDD. For reference, our c
 ```	
 
 * On running this code Some of our test will pass but some will fail as well and here is how the output will look like.
+
      ![Some-Passed][Some-Passed]
 
 * Let's go back to our Receipt.php file and make these changes - 
@@ -542,7 +543,8 @@ Try this one one out with our current understanding of TDD. For reference, our c
 	}
 ```
 * Run the Test Again.. All Greens. Woohoo...!!!
-![All-Passed][All-Passed]
+
+	 ![All-Passed][All-Passed]
 
 #### Understanding the Code
 
