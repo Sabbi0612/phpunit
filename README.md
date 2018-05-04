@@ -145,8 +145,8 @@ To run the test -
 * Since, now we have created our first unit test, its time to refactor our test. Going a bit deeper into writing Unit test we follow a certain pattern of **_Arrange-Act-Assert_**
 
 ### What is Arrange-Act-Assert Pattern?
-* **_Arrange_** is where we arrange all the necessary preconditions and inputs for our test case. After this,
-* **_Act_** we act on the object or method we are testing i.e. actually call the thing we want to test. And finally, 
+* **_Arrange_** is where we arrange all the necessary preconditions and inputs for our test case.
+* **_Act_** is where we act on the object or method we are testing i.e. actually call the thing we want to test. And finally, 
 * we finish up with an **_Assertion_** that the expected results have occurred.
 
 ### Some general rules to abide by while writing unit tests - 
